@@ -1,9 +1,8 @@
-package com.nhom43.projectqlcc.model.dto;
+package com.nhom43.projectqlcc.entity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 @Data
@@ -12,13 +11,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class TaiKhoanDTO {
 
-    private int idTaiKhoan;
     private String taiKhoan;
-    private int phanQuyen;
+    private String matKhau;
+    private String phanQuyen;
     private String soDienThoai;
     private String email;
 
-    public void hello() {
-        System.out.println("Xin chào! ");
-    }
 }

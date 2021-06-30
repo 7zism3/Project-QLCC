@@ -1,0 +1,2 @@
+//
+Thư mục chứa các Entity ánh xạ đến DB

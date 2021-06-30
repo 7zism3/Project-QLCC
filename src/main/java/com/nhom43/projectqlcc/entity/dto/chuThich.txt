@@ -1,0 +1,3 @@
+//
+Xác định lớp mô hình *DTO như sau.
+Nó chịu trách nhiệm nhận các giá trị từ người dùng và chuyển nó đến lớp *DAO (*Repository) để chèn vào cơ sở dữ liệu.

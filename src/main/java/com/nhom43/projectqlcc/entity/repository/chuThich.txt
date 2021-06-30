@@ -1,0 +1,7 @@
+//
+Tiếp theo, chúng ta định nghĩa UserDao là một giao diện mở rộng CrudRepository của lớp Spring Framework.
+Lớp CrudRepository là một generics và lấy hai tham số sau làm đối số-
+Kho lưu trữ này sẽ làm việc với kiểu Đối tượng nào- Trong trường hợp của chúng ta,
+DAOUser và Id sẽ là kiểu đối tượng nào- Số nguyên (vì id được định nghĩa trong lớp UserDao là Số nguyên)
+Đó là cấu hình duy nhất cần thiết cho lớp kho lưu trữ.
+Thao tác bắt buộc chèn chi tiết người dùng trong DB bây giờ sẽ được xử lý. Xác định lớp DAO như sau.

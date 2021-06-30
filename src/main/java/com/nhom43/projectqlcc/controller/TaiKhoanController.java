@@ -1,9 +1,8 @@
 package com.nhom43.projectqlcc.controller;
 
-import com.nhom43.projectqlcc.entity.TaiKhoan;
-import com.nhom43.projectqlcc.model.dto.TaiKhoanDTO;
+import com.nhom43.projectqlcc.entity.model.TaiKhoan;
+import com.nhom43.projectqlcc.entity.dto.TaiKhoanDTO;
 import com.nhom43.projectqlcc.service.TaiKhoanService;
-import com.nhom43.projectqlcc.service.TaiKhoanServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,7 @@ public class TaiKhoanController {
 
     @GetMapping ("")
     public ResponseEntity<?> getListTaiKhoan (){
-        List<TaiKhoanDTO> taiKhoans = taiKhoanService.getListTaiKhoan();
+        List<TaiKhoan> taiKhoans = taiKhoanService.getListTaiKhoan();
         return ResponseEntity.ok(taiKhoans);
     }
 
