@@ -15,21 +15,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@Configuration
+//@EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+//    @Autowired
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-    @Autowired
+//    @Autowired
     private UserDetailsService jwtUserDetailsService;
 
-    @Autowired
+//    @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
-    @Autowired
+//    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // Cấu hình AuthenticationManager để nó biết từ đâu cần tải
         // người dùng cho thông tin đăng nhập phù hợp
@@ -37,18 +37,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
-    @Bean
+//    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    @Override
+//    @Bean
+//    @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
-    @Override
+//    @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         // Chúng tôi không cần CSRF cho ví dụ này
         httpSecurity.csrf().disable()
@@ -62,6 +62,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // Thêm bộ lọc để xác thực mã Tokens với mọi yêu cầu
-        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+//        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }
