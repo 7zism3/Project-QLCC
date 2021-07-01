@@ -13,15 +13,15 @@ import javax.sql.DataSource;
 //@Configuration
 //@EnableWebSecurity
 public class SecurityConfiguration  extends WebSecurityConfigurerAdapter {
-    @Autowired
+//    @Autowired
     DataSource dataSource;
-    @Override
+//    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws  Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("Select taikhoan, matkhau from taikhoan where taikhoan = ?")
                 .authoritiesByUsernameQuery("Select taikhoan, phanquyen from taikhoan where taikhoan = ?");
     }
-    @Override
+//    @Override
     protected void configure(HttpSecurity http) throws Exception{
         super.configure(http);
     }
