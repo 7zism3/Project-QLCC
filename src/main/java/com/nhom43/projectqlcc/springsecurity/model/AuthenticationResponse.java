@@ -1,22 +1,17 @@
 package com.nhom43.projectqlcc.springsecurity.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthenticationResponse {
 
     private String token;
-
-    public AuthenticationResponse(String token) {
-        this.token = token;
-    }
-
-    public AuthenticationResponse() {
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
+    private String taiKhoan;
+    private String phanQuyen;
+    private String messages;
 
 }

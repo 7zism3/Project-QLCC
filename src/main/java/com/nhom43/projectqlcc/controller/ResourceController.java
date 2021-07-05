@@ -16,4 +16,8 @@ public class ResourceController {
         return "Hello Admin";
     }
 
+    @RequestMapping({ "/hello" })
+    public String firstPage() {
+        return "Hello World - I 'm Thhuyy";
+    }
 }

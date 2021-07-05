@@ -1,4 +1,5 @@
 package com.nhom43.projectqlcc.springsecurity.config;
+
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -12,6 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -29,8 +31,8 @@ public class CustomJwtAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         try {
-            // JWT Token is in the form "Bearer token". Remove Bearer word and
-            // get only the Token
+            // Mã JWT Token có dạng "Bearer token". Xóa từ Bearer và
+            // chỉ lấy mã Token
             String jwtToken = extractJwtFromRequest(request);
 
             if (StringUtils.hasText(jwtToken) && jwtTokenUtil.validateToken(jwtToken)) {
@@ -39,9 +41,12 @@ public class CustomJwtAuthenticationFilter extends OncePerRequestFilter {
 
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
-                // After setting the Authentication in the context, we specify
-                // that the current user is authenticated. So it passes the
-                // Spring Security Configurations successfully.
+
+//                usernamePasswordAuthenticationToken
+//                        .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                // Sau khi đặt Xác thực trong ngữ cảnh, chúng tôi chỉ định
+                // rằng người dùng hiện tại được xác thực. Vì vậy, nó vượt qua
+                // Cấu hình bảo mật mùa xuân thành công.
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             } else {
                 System.out.println("Cannot set the Security Context");
@@ -50,14 +55,14 @@ public class CustomJwtAuthenticationFilter extends OncePerRequestFilter {
 
             String isRefreshToken = request.getHeader("isRefreshToken");
             String requestURL = request.getRequestURL().toString();
-            // allow for Refresh Token creation if following conditions are true.
+            // Cho phép tạo Mã Token mới nếu các điều kiện sau là đúng.
             if (isRefreshToken != null && isRefreshToken.equals("true") && requestURL.contains("refreshtoken")) {
                 allowForRefreshToken(ex, request);
             } else
-                request.setAttribute("exception", ex);
+                request.setAttribute("Exception: ", ex);
 
         } catch (BadCredentialsException ex) {
-            request.setAttribute("exception", ex);
+            request.setAttribute("Exception: ", ex);
         } catch (Exception ex) {
             System.out.println(ex);
         }
