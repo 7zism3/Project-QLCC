@@ -17,13 +17,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
     TaiKhoanRepository taiKhoanRepository;
 
     //----------------
-    private static ArrayList<TaiKhoan> taiKhoans = new ArrayList<TaiKhoan>();
 
-    static {
-        taiKhoans.add(new TaiKhoan(1, "admin", "admin", "ADMIN", "113", "admin@qlcc.com"));
-        taiKhoans.add(new TaiKhoan(2, "P101_KH", "khachHang", "CUDAN", "090..11", "kh01@qlcc.com"));
-        taiKhoans.add(new TaiKhoan(3, "P102_KH", "khachHang", "CUDAN", "090..12", "kh02@qlcc.com"));
-    }
 
     @Override
     public List<TaiKhoan> getListTaiKhoan() {
@@ -33,16 +27,29 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 
     @Override
     public TaiKhoanDTO getTaiKhoanById(int id) {
+        List<TaiKhoan> taiKhoans = taiKhoanRepository.findAll();
         for (TaiKhoan taiKhoan : taiKhoans) {
             if (id == taiKhoan.getIdTaiKhoan()) {
                 return TaiKhoanMapper.toTaiKhoanDTO(taiKhoan);
             }
         }
-        throw new NotFoundException("Tài khỏan không tồn tại trong hệ thống.");
+        throw new NotFoundException("Tài khoản không tồn tại trong hệ thống.");
+    }
+
+    @Override
+    public TaiKhoanDTO getTaiKhoanByTaiKhoan(String tk) {
+        List<TaiKhoan> taiKhoans = taiKhoanRepository.findAll();
+        for (TaiKhoan taiKhoan : taiKhoans) {
+            if (tk.equals(taiKhoan.getTaiKhoan())) {
+                return TaiKhoanMapper.toTaiKhoanDTO(taiKhoan);
+            }
+        }
+        throw new NotFoundException("Tài khoản không tồn tại trong hệ thống.");
     }
 
     @Override
     public List<TaiKhoanDTO> searchTaiKhoan(String name) {
+        List<TaiKhoan> taiKhoans = taiKhoanRepository.findAll();
         List<TaiKhoanDTO> result = new ArrayList<TaiKhoanDTO>();
         for (TaiKhoan taiKhoan : taiKhoans) {
             if (taiKhoan.getTaiKhoan().contains(name)) {

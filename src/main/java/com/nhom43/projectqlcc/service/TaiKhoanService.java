@@ -12,6 +12,8 @@ public interface TaiKhoanService {
 
     public TaiKhoanDTO getTaiKhoanById (int id);
 
+    public TaiKhoanDTO getTaiKhoanByTaiKhoan (String taiKhoan);
+
     List<TaiKhoanDTO> searchTaiKhoan(String name);
 
 //    public TaiKhoan save(TaiKhoanDTO tkDTO);

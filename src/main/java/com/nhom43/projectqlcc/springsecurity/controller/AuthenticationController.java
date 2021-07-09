@@ -29,7 +29,7 @@ import com.nhom43.projectqlcc.entity.dto.TaiKhoanDTO;
 import io.jsonwebtoken.impl.DefaultClaims;
 
 @RestController
-@CrossOrigin
+@CrossOrigin (origins = "http://localhost:3000")
 public class AuthenticationController {
 
     @Autowired

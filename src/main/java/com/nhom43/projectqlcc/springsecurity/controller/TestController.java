@@ -1,10 +1,12 @@
 package com.nhom43.projectqlcc.springsecurity.controller;
 
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 //import io.jsonwebtoken.ExpiredJwtException;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class TestController {
 
 //    @Autowired

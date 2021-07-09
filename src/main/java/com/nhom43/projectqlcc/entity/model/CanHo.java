@@ -15,33 +15,27 @@ import java.io.Serializable;
 @Component
 //---------
 @Entity
-@Table(name = "taikhoan")
-public class TaiKhoan implements Serializable {
+@Table(name = "canho")
+public class CanHo implements Serializable {
     private static final long serialVersionUID = -297553281792804396L;
 
     @ToString.Include()
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idtaikhoan")
-    private long idTaiKhoan;
+    @Column(name = "idcanho")
+    private long idCanHo;
 
     // Mapping thông tin biến với tên cột trong Database
-    @NonNull
     @ToString.Include()
-    @Column(name = "taikhoan")
-    private String taiKhoan;
     @NonNull
-    @Column(name = "matkhau")
-    private String matKhau;
+    @Column(name = "tencanho")
+    private String tenCanHo;
     @NonNull
-    @Column(name = "phanquyen")
-    private String phanQuyen;
+    @Column(name = "mota")
+    private String moTa;
     @NonNull
-    @Column(name = "sodienthoai")
-    private String soDienThoai;
-    @NonNull
-    @Column(name = "email")
-    private String email;
+    @Column(name = "dientich")
+    private int dienTich;
 
     // Nếu không đánh dấu @Column thì sẽ mapping tự động theo tên biến
 }
